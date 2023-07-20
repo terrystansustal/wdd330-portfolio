@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Look Up</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Quick Look Up - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+    <p>
+        // Function to open the modal and display product details <br>
+        function openModal(product) { <br>
+        const modal = document.getElementById('productModal'); <br>
+        const closeModal = document.getElementsByClassName('close')[0]; <br>
+        <br>
+        // Populate modal with product details <br>
+        document.getElementById('modalProductName').textContent = product.name; <br>
+        document.getElementById('modalProductNameWithoutBrand').textContent = product.nameWithoutBrand; <br>
+        document.getElementById('modalProductImage').src = product.image; <br>
+        document.getElementById('modalProductFinalPrice').textContent = product.finalPrice; <br>
+        document.getElementById('modalProductColorName').textContent = product.colorName; <br>
+        document.getElementById('modalProductDescriptionHtmlSimple').textContent = product.descriptionHtmlSimple; <br>
+        <br>
+        // Show the modal <br>
+        modal.style.display = 'block'; <br>
+        <br>
+        // Close the modal when the 'x' button is clicked <br>
+        closeModal.onclick = function() { <br>
+            modal.style.display = 'none'; <br>
+        }; <br>
+        <br>
+        // Close the modal when clicking outside the modal content <br>
+        window.onclick = function(event) { <br>
+            if (event.target == modal) { <br>
+            modal.style.display = 'none'; <br>
+            } <br>
+        }; <br>
+        } <br>
+        <br>
+        // Function to handle the click event of the quick view button <br>
+        function handleQuickViewClick(event) { <br>
+        const productId = event.target.getAttribute('data-id'); <br>
+        // Fetch the product details using the productId <br>
+        const product = { <br>
+            // Populate the product details here... <br>
+        }; <br>
+        <br>
+        openModal(product); <br>
+        } <br>
+        <br>
+        // Load the product listing and attach event listeners <br>
+        window.addEventListener('DOMContentLoaded', () => { <br>
+        const quickViewButtons = document.getElementsByClassName('quick-view-button'); <br>
+        <br>
+        // Attach click event listener to each quick view button <br>
+        Array.from(quickViewButtons).forEach(button => { <br>
+            button.addEventListener('click', handleQuickViewClick); <br>
+        }); <br>
+        <br>
+        });
+    </p>
+</body>
+</html>

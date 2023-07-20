@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Slideshow - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+      <p>
+        let slideIndex = 1; <br>
+        showSlides(slideIndex); <br>
+        <br>
+        function plusSlides(n) { <br>
+        showSlides(slideIndex += n); <br>
+        } <br>
+        <br>
+        function currentSlide(n) { <br>
+        showSlides(slideIndex = n); <br>
+        } <br>
+        <br>
+        function showSlides(n) { <br>
+        let i; <br>
+        let slides = document.getElementsByClassName("mySlides"); <br>
+        let dots = document.getElementsByClassName("dot"); <br>
+        if (n > slides.length) {slideIndex = 1} <br>
+        if (n < 1) {slideIndex = slides.length} <br>
+        for (i = 0; i < slides.length; i++) { <br>
+            slides[i].style.display = "none"; <br>
+        } <br>
+        for (i = 0; i < dots.length; i++) { <br>
+            dots[i].className = dots[i].className.replace(" active", ""); <br>
+        } <br>
+        slides[slideIndex-1].style.display = "block"; <br>
+        } <br>
+      </p>
+      
+</body>
+</html>

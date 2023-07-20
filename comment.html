@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Submission</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Comment Submission - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+    <section class="product-detail">
+        <h3 id="productName"></h3>
+        <h2 class="divider" id="productNameWithoutBrand"></h2>
+        <img 
+          id="productImage" 
+          class="divider" 
+          src="" 
+          sizes="100vw" 
+          srcset="" 
+          alt="" 
+        />
+        <p class="product-card__price" id="productFinalPrice"></p>
+        <p class="product__color" id="productColorName"></p>
+        <p class="product__description" id="productDescriptionHtmlSimple"></p>
+      
+        <div class="product-detail__comments">
+          <h4>Comments</h4>
+          <ul id="commentsList"></ul>
+      
+          <form id="commentForm">
+            <textarea id="commentInput" rows="4" placeholder="Add a comment"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      
+        <div class="product-detail__add">
+          <button id="addToCart" data-id="">Add to Cart</button>
+        </div>
+      </section>
+
+      <p>
+        // Get the product ID from the URL or any other means <br>
+        const productId = 'your_product_id'; <br>
+        <br>
+        // Function to display comments on the product detail page <br>
+        function displayComments(comments) { <br>
+        const commentsList = document.getElementById('commentsList'); <br>
+        commentsList.innerHTML = ''; <br>
+        <br>
+        comments.forEach(comment => { <br>
+            const li = document.createElement('li'); <br>
+            li.textContent = comment; <br>
+            commentsList.appendChild(li); <br>
+        }); <br>
+        } <br>
+        <br>
+        // Function to handle form submission <br>
+        function handleCommentSubmission(event) { <br>
+        event.preventDefault(); <br>
+        <br>
+        const commentInput = document.getElementById('commentInput'); <br>
+        const comment = commentInput.value.trim(); <br>
+        <br>
+        if (comment !== '') { <br>
+            // Save the comment to the database or any other storage <br>
+            // Here, we'll just add it to a local array as an example <br>
+            const comments = localStorage.getItem(productId) <br>
+            ? JSON.parse(localStorage.getItem(productId)) <br>
+            : []; <br>
+            
+            comments.push(comment); <br>
+            localStorage.setItem(productId, JSON.stringify(comments)); <br>
+            <br>
+            // Clear the input field <br>
+            commentInput.value = ''; <br>
+            <br>
+            // Display the updated comments <br>
+            displayComments(comments); <br>
+        } <br>
+        } <br>
+        <br>
+        // Load the product details and comments <br>
+        window.addEventListener('DOMContentLoaded', () => { <br>
+
+        // Load the comments for the product <br>
+        const comments = localStorage.getItem(productId) <br>
+            ? JSON.parse(localStorage.getItem(productId)) <br>
+            : []; <br>
+        <br>
+        displayComments(comments); <br>
+        <br>
+        // Add event listener for form submission <br>
+        const commentForm = document.getElementById('commentForm'); <br>
+        commentForm.addEventListener('submit', handleCommentSubmission); <br>
+        });
+      </p>
+      
+</body>
+</html>

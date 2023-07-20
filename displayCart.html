@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Cart</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Display Cart - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+    <p>
+        function displayCart() { <br>
+            // Retrieve the cartItems from sessionStorage <br>
+            let cartItems = sessionStorage.getItem('cartItems'); <br>
+            <br>
+            // Check if the cartItems variable is empty or null <br>
+            if (cartItems === null || cartItems === '') { <br>
+              // If empty, display an empty cart message <br>
+              document.getElementById('cartItems').innerHTML = "p>Your cart is empty./p>"; <br>
+              document.getElementById('cartTotal').innerHTML = ""; // Clear the total cost <br>
+            } else { <br>
+              // If not empty, parse the JSON string into an array <br>
+              cartItems = JSON.parse(cartItems); <br>
+              <br>
+              // Generate the HTML to display the cart items and calculate the total cost <br>
+              let cartHTML = ''; <br>
+              let totalCost = 0; <br>
+              for (let i = 0; i < cartItems.length; i++) { <br>
+                const item = cartItems[i]; <br>
+                cartHTML += "div class='cart-item'"; <br>
+                cartHTML += "img src='" + item.image + "' alt='Image of item'>"; <br>
+                cartHTML += "div class='item-details'>"; <br>
+                cartHTML += "p class='item-name'>" + item.name + "/p>"; <br>
+                cartHTML += "p class='item-price'>" + item.price + "/p>"; <br>
+                cartHTML += "button class='remove-button' onclick='removeItemFromCart(" + i + ")'>Remove/button>"; <br>
+                cartHTML += "/div>"; <br>
+                cartHTML += "/div>"; <br>
+                <br>
+                // Calculate the total cost <br>
+                const price = parseFloat(item.price.replace(/[^0-9.-]+/g, '')); <br>
+                totalCost += price; <br>
+              } <br>
+              <br>
+              // Display the cart items in the HTML element with the id 'cartItems' <br>
+              document.getElementById('cartItems').innerHTML = cartHTML; <br>
+              <br>
+              // Update the total items count <br>
+              document.getElementById('itemCount').textContent = cartItems.length; <br>
+              <br>
+              // Display the total cost in the HTML element with the id 'cartTotal' <br>
+              document.getElementById('cartTotal').innerHTML = "Total Cost: $" + totalCost.toFixed(2); <br>
+            } <br>
+        }
+    </p>
+      
+</body>
+</html>

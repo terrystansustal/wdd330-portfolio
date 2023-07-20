@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Cart</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Checkout Cart - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+    <p>
+        function checkout(event) { <br>
+            event.preventDefault(); <br>
+            <br>
+            // Retrieve the cart items from sessionStorage <br>
+            let cartItems = sessionStorage.getItem('cartItems'); <br>
+            <br>
+            // Check if the cartItems variable is empty or null <br>
+            if (cartItems === null || cartItems === '') { <br>
+              // If the cart is empty, display an error message <br>
+              alert("Your cart is empty. Add items before checking out."); <br>
+              // Redirect the user back to the cart page <br>
+              window.location.href = "cart.html"; <br>
+              return; <br>
+            } <br>
+            <br>
+            // Clear the cart items from sessionStorage <br>
+            sessionStorage.removeItem('cartItems'); <br>
+            <br>
+            // Display a success message <br>
+            alert("Checkout completed successfully!"); <br>
+            // Redirect the user to the thank you page <br>
+            window.location.href = "index.html"; <br>
+          }
+    </p>
+      
+</body>
+</html>

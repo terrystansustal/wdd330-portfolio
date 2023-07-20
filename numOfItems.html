@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superscript Number of Items</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Superscript Number of Items - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+    <div>
+        <p>export default function ShoppingCart() { <br>
+            const cartItems = getLocalStorage("so-cart"); <br>
+            const outputEl = document.querySelector(".product-list"); <br>
+            const total = calculateListTotal(cartItems); <br>
+            displayCartTotal(total); <br>
+          
+            console.log (cartItems); <br>
+            outputEl.addEventListener("click", function(el) { <br>
+              // If clicked icon contains the cart-delete class <br>
+              if (el.target.classList.contains("cart-delete")) { <br>
+                // Remove item from cart <br>
+                el.target.parentElement.remove(); <br>
+                
+                // Store item data id <br>
+                const delItemId = el.target.getAttribute("data-id"); <br>
+          
+                // Remove item from local storage <br>
+                removeFromCart("so-cart", delItemId); <br>
+          
+              } <br>
+            }); <br>
+          
+            renderListWithTemplate(cartItemTemplate, outputEl, cartItems); <br>
+          
+            <br>
+            const totalItems = cartItems.reduce((total_value, item) => total_value + item.quantity, 0); <br>
+            
+            // Update the count element with the total number of items <br>
+            document.getElementById("count").innerHTML = totalItems.toString(); <br>
+          }</p>
+    </div>
+</body>
+</html>

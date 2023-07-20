@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Item</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Remove Item - Terrystan Sustal</h1>
+
+    <h2>Code</h2>
+
+    <p>
+        function removeItemFromCart(index) { <br>
+            // Retrieve the cart items from sessionStorage <br>
+            let cartItems = sessionStorage.getItem('cartItems'); <br>
+            <br>
+            // Check if the cartItems variable is empty or null <br>
+            if (cartItems === null || cartItems === '') { <br>
+                return; // No items to remove <br>
+            } <br>
+            <br>
+            // Parse the JSON string into an array <br>
+            cartItems = JSON.parse(cartItems); <br>
+            <br>
+            // Remove the item at the specified index from the cartItems array <br>
+            if (index >= 0 && index < cartItems.length) { <br>
+                cartItems.splice(index, 1); <br>
+            } <br>
+            <br>
+            // Store the updated cartItems array back to sessionStorage <br>
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems)); <br>
+            <br>
+            // Refresh the page to update the cart display <br>
+            location.reload(); <br>
+        }
+    </p>
+      
+</body>
+</html>
